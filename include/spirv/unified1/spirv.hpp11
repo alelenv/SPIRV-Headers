@@ -227,6 +227,7 @@ enum class StorageClass : unsigned {
     ShaderRecordBufferNV = 5343,
     PhysicalStorageBuffer = 5349,
     PhysicalStorageBufferEXT = 5349,
+    HitObjectAttributeNV = 5385,
     TaskPayloadWorkgroupEXT = 5402,
     CodeSectionINTEL = 5605,
     DeviceOnlyINTEL = 5936,
@@ -522,6 +523,7 @@ enum class Decoration : unsigned {
     RestrictPointerEXT = 5355,
     AliasedPointer = 5356,
     AliasedPointerEXT = 5356,
+    HitObjectShaderRecordBufferNV = 5386,
     BindlessSamplerNV = 5398,
     BindlessImageNV = 5399,
     BoundSamplerNV = 5400,
@@ -1058,6 +1060,7 @@ enum class Capability : unsigned {
     FragmentShaderPixelInterlockEXT = 5378,
     DemoteToHelperInvocation = 5379,
     DemoteToHelperInvocationEXT = 5379,
+    ShaderExecutionReorderNV = 5383,
     BindlessTextureNV = 5390,
     SubgroupShuffleINTEL = 5568,
     SubgroupBufferBlockIOINTEL = 5569,
@@ -1609,6 +1612,34 @@ enum class Op : unsigned {
     OpFragmentMaskFetchAMD = 5011,
     OpFragmentFetchAMD = 5012,
     OpReadClockKHR = 5056,
+    OpHitObjectGetObjectRayDirectionNV = 5254,
+    OpHitObjectGetObjectRayOriginNV = 5255,
+    OpHitObjectTraceRayMotionNV = 5256,
+    OpHitObjectGetShaderRecordBufferHandleNV = 5257,
+    OpHitObjectGetShaderBindingTableRecordIndexNV = 5258,
+    OpHitObjectRecordEmptyNV = 5259,
+    OpHitObjectTraceRayNV = 5260,
+    OpHitObjectRecordHitNV = 5261,
+    OpHitObjectRecordHitWithIndexNV = 5262,
+    OpHitObjectRecordMissNV = 5263,
+    OpHitObjectExecuteShaderNV = 5264,
+    OpHitObjectGetCurrentTimeNV = 5265,
+    OpHitObjectGetAttributesNV = 5266,
+    OpHitObjectGetHitKindNV = 5267,
+    OpHitObjectGetPrimitiveIndexNV = 5268,
+    OpHitObjectGetGeometryIndexNV = 5269,
+    OpHitObjectGetInstanceIdNV = 5270,
+    OpHitObjectGetInstanceCustomIndexNV = 5271,
+    OpHitObjectGetWorldRayDirectionNV = 5272,
+    OpHitObjectGetWorldRayOriginNV = 5273,
+    OpHitObjectGetRayTMaxNV = 5274,
+    OpHitObjectGetRayTMinNV = 5275,
+    OpHitObjectIsEmptyNV = 5276,
+    OpHitObjectIsHitNV = 5277,
+    OpHitObjectIsMissNV = 5278,
+    OpReorderThreadWithHitObjectNV = 5279,
+    OpReorderThreadWithHintNV = 5280,
+    OpTypeHitObjectNV = 5281,
     OpImageSampleFootprintNV = 5283,
     OpEmitMeshTasksEXT = 5294,
     OpSetMeshOutputsEXT = 5295,
@@ -2284,6 +2315,34 @@ inline void HasResultAndType(Op opcode, bool *hasResult, bool *hasResultType) {
     case Op::OpFragmentMaskFetchAMD: *hasResult = true; *hasResultType = true; break;
     case Op::OpFragmentFetchAMD: *hasResult = true; *hasResultType = true; break;
     case Op::OpReadClockKHR: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetObjectRayDirectionNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetObjectRayOriginNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectTraceRayMotionNV: *hasResult = false; *hasResultType = false; break;
+    case Op::OpHitObjectGetShaderRecordBufferHandleNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetShaderBindingTableRecordIndexNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectRecordEmptyNV: *hasResult = false; *hasResultType = false; break;
+    case Op::OpHitObjectTraceRayNV: *hasResult = false; *hasResultType = false; break;
+    case Op::OpHitObjectRecordHitNV: *hasResult = false; *hasResultType = false; break;
+    case Op::OpHitObjectRecordHitWithIndexNV: *hasResult = false; *hasResultType = false; break;
+    case Op::OpHitObjectRecordMissNV: *hasResult = false; *hasResultType = false; break;
+    case Op::OpHitObjectExecuteShaderNV: *hasResult = false; *hasResultType = false; break;
+    case Op::OpHitObjectGetCurrentTimeNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetAttributesNV: *hasResult = false; *hasResultType = false; break;
+    case Op::OpHitObjectGetHitKindNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetPrimitiveIndexNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetGeometryIndexNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetInstanceIdNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetInstanceCustomIndexNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetWorldRayDirectionNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetWorldRayOriginNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetRayTMaxNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectGetRayTMinNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectIsEmptyNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectIsHitNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpHitObjectIsMissNV: *hasResult = true; *hasResultType = true; break;
+    case Op::OpReorderThreadWithHitObjectNV: *hasResult = false; *hasResultType = false; break;
+    case Op::OpReorderThreadWithHintNV: *hasResult = false; *hasResultType = false; break;
+    case Op::OpTypeHitObjectNV: *hasResult = true; *hasResultType = false; break;
     case Op::OpImageSampleFootprintNV: *hasResult = true; *hasResultType = true; break;
     case Op::OpEmitMeshTasksEXT: *hasResult = false; *hasResultType = false; break;
     case Op::OpSetMeshOutputsEXT: *hasResult = false; *hasResultType = false; break;
